@@ -1,6 +1,9 @@
-{%{% extends 'tasks/layout.html' %}%} {%block body%}
-<form method="POST">
-  <input type="text" name="task" />
+{% extends 'tasks/layout.html' %} {%block body%}
+<a href='{% url 'tasks:index' %}' alt='add'>add new task</a>
+<form action='{% url 'tasks:add'  %}' method="POST">
+    {% csrf_token %}
+  {% comment %} <input type="text" name="task" /> {% endcomment %}
+  {{form}}
   <button>Add todo</button>
 </form>
 {% endblock %}
